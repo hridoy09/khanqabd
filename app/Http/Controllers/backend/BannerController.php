@@ -97,8 +97,8 @@ class BannerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update($id, Request $request){
-		
-		
+
+        
         $banners = Banner::find($id);
 		if($request->hasFile('banner_img')) {
             $file = $request->file('banner_img') ;

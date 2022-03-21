@@ -1,6 +1,6 @@
 @extends('admin.master.main')
 @section('content')
-{{ 'Category List' }}
+{{ 'Banner List' }}
 <div class="content-body">
 
     <div class="row page-titles mx-0">

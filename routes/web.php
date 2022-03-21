@@ -5,7 +5,8 @@ use App\Http\Controllers\frontend\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\backend\LogoController;
 use App\Http\Controllers\backend\BannerController;
-
+use App\Http\Controllers\backend\SubcategoryController;
+use App\Http\Controllers\backend\AudioController;
 use App\Http\Controllers\CategoryController;
 
 /*
@@ -24,7 +25,8 @@ use App\Http\Controllers\CategoryController;
 //     return view('admin.master.main');
 // });
 
-Route::resource('category', CategoryController::class);
+
+
 Route::get('/', [UserController::class, 'home'])->name('index');
 Route::get('/bayan', [UserController::class, 'bayan'])->name('bayan');
 Route::get('/book', [UserController::class, 'book'])->name('book');
@@ -37,6 +39,10 @@ Route::get('/dashboard',  [HomeController::class, 'index'])->name('home')->middl
 
 
 Route::group(['middleware'=>['auth']], function(){
+
+	Route::resource('category', CategoryController::class);
+	Route::resource('subcategory', SubcategoryController::class);
+
 Route::prefix('logo')->group(function(){
 	// Route::get('/add', [LogoController::class, 'addlogo'])->name('logo.add');
 	Route::post('/store', [LogoController::class, 'storelogo'])->name('logo.store');
@@ -54,6 +60,15 @@ Route::prefix('banner')->group(function(){
 	Route::get('/delete/{id}', [BannerController::class, 'deletebanner']);
 	Route::get('/edit/{id}', [BannerController::class, 'edit'])->name('banner.edit');
 	Route::post('/update/{id}', [BannerController::class, 'update'])->name('banner.update');
+});
+Route::prefix('audio')->group(function(){
+	Route::get('/add', [AudioController::class, 'addaudio'])->name('audio.add');
+	Route::post('/store', [AudioController::class, 'storeaudio'])->name('audio.store');
+	Route::get('/all-files', [AudioController::class, 'audiolist'])->name('audio.list');
+
+	Route::get('/delete/{id}', [AudioController::class, 'deleteaudio']);
+	Route::get('/edit/{id}', [AudioController::class, 'edit'])->name('audio.edit');
+	Route::post('/update/{id}', [AudioController::class, 'update'])->name('audio.update');
 });
 
 });
