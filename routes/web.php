@@ -7,6 +7,7 @@ use App\Http\Controllers\backend\LogoController;
 use App\Http\Controllers\backend\BannerController;
 use App\Http\Controllers\backend\SubcategoryController;
 use App\Http\Controllers\backend\AudioController;
+use App\Http\Controllers\backend\BookController;
 use App\Http\Controllers\CategoryController;
 
 /*
@@ -69,6 +70,15 @@ Route::prefix('audio')->group(function(){
 	Route::get('/delete/{id}', [AudioController::class, 'deleteaudio']);
 	Route::get('/edit/{id}', [AudioController::class, 'edit'])->name('audio.edit');
 	Route::post('/update/{id}', [AudioController::class, 'update'])->name('audio.update');
+});
+Route::prefix('book')->group(function(){
+	Route::get('/add', [BookController::class, 'addbook'])->name('book.add');
+	Route::post('/store', [BookController::class, 'storebook'])->name('book.store');
+	Route::get('/all-files', [BookController::class, 'booklist'])->name('book.list');
+
+	Route::get('/delete/{id}', [BookController::class, 'deletebook']);
+	Route::get('/edit/{id}', [BookController::class, 'edit'])->name('book.edit');
+	Route::post('/update/{id}', [BookController::class, 'update'])->name('book.update');
 });
 
 });
