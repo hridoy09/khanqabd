@@ -25,26 +25,36 @@ class BookController extends Controller
     	$validateData = $request->validate([
             'cat_id' => 'required',
             'subcat_id' => 'required',
+            
+           
     	
            
     	],
     	[
             'cat_id.required' => 'select category',
             'subcat_id.required' => 'select subcategory',
+    		'feature.mimes' => 'image must be jpg,png format',
     		'pdf_file.mimes' => 'book must be pdf format',
           
     	]);
+        if($request->hasFile('feature_img')) {
+            $file = $request->file('feature_img');
+            $imgfileName = $file->getClientOriginalName();
+            $imgPath = public_path().'/admin/book_feature_img' ;
+            $file->move($imgPath,$imgfileName);
+    	}
 
 
 		//
 		if($request->hasFile('pdf_file')) {
-            $file = $request->file('pdf_file') ;
-            $fileName = $file->getClientOriginalName() ;
+            $file = $request->file('pdf_file');
+            $fileName = $file->getClientOriginalName();
             $destinationPath = public_path().'/admin/book' ;
             $file->move($destinationPath,$fileName);
     	}
 	
     Book::insert([
+        'feature_img' => $imgfileName,
       	'pdf_file' => $fileName,
         'cat_id' => $request->cat_id,
         'subcat_id' => $request->subcat_id,
@@ -58,7 +68,7 @@ class BookController extends Controller
     }
 
     public function booklist(){
-    	$books = Book::with('category','subcategory')->get();
+    	$books = Book::with('category','subcategory')->paginate(10);
     	return view('admin.book.listbook',compact('books'));
     }
 
@@ -66,12 +76,10 @@ class BookController extends Controller
 
     public function deletebook($id){
     	$book = Book::findOrFail($id);
-        if (File::exists(public_path('admin/book/')).$book->pdf_file) {
+      unlink("admin/book_feature_img/".$book->feature_img);
+          if (File::exists(public_path('admin/book/')).$book->pdf_file) {
             unlink((public_path('admin/book/')).$book->pdf_file);
           }
-       
-	
-
 		Book::findOrFail($id)->delete();
 
 		
@@ -100,7 +108,13 @@ class BookController extends Controller
 
         
         $books = Book::find($id);
-		if($request->hasFile('pdf_file')) {
+		if($request->hasFile('feature_img')) {
+            $file = $request->file('feature_img') ;
+            $imgfileName = $file->getClientOriginalName() ;
+            $imgPath = public_path().'/admin/book_feature_img' ;
+            $file->move($destinationPath,$fileName);
+    	}
+        if($request->hasFile('pdf_file')) {
             $file = $request->file('pdf_file') ;
             $fileName = $file->getClientOriginalName() ;
             $destinationPath = public_path().'/admin/book' ;

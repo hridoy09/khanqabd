@@ -25,7 +25,8 @@
                                     <tr>
                                         <th>Serial No </th>
                                         <th>Category Name </th>
-                                        <th>Subcategory nsme</th>
+                                        <th>Subcategory name</th>
+                                        <th>Feature Image</th>
                                         <th>Audio File</th>
                                         <th>Action</th>
                                     </tr>
@@ -35,6 +36,7 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$audio->category->name}}</td>
                                     <td>{{$audio->subcategory->subcat_name}}</td>
+                                    <td>{{$audio->feature_img}}</td>
                                     <td>{{$audio->audio_file}}</td>
                              
                                         <td>
@@ -46,6 +48,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            {!!$audios->render()!!}
                         </div>
                     </div>
                 </div>

@@ -59,8 +59,8 @@ setTimeout(changeSlide,2000);
 }
 changeSlide();
 
-
-
+</script>
+<script>
 $(document).ready(function() {
 $(".slider").slick({
 arrows: true,

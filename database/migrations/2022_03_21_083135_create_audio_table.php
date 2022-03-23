@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('cat_id');
             $table->integer('subcat_id');
+            $table->string('feature_img');
             $table->string('audio_file');
             $table->timestamps();
         });

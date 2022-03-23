@@ -25,7 +25,8 @@
                                     <tr>
                                         <th>Serial No </th>
                                         <th>Category Name </th>
-                                        <th>Subcategory nsme</th>
+                                        <th>Subcategory name</th>
+                                        <th>Feature Image</th>
                                         <th>book File</th>
                                         <th>Action</th>
                                     </tr>
@@ -35,6 +36,7 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$book->category->name}}</td>
                                     <td>{{$book->subcategory->subcat_name}}</td>
+                                    <td>{{$book->feature_img}}</td>
                                     <td>{{$book->pdf_file}}</td>
                              
                                         <td>
@@ -46,6 +48,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            {!!$books->render()!!}
                         </div>
                     </div>
                 </div>

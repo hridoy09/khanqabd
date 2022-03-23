@@ -12,6 +12,7 @@ class AudioController extends Controller
 {
     public function addaudio()
     {
+
         $categories=Category::all();
         $subcategories=Subcategory::all();
     	return view('admin.audio.addaudio',compact('categories','subcategories'));
@@ -30,7 +31,13 @@ class AudioController extends Controller
     		'audio_file.mimes' => 'audio must be mp3 format',
           
     	]);
-
+        if($request->hasFile('feature_img')) {
+            $file = $request->file('feature_img') ;
+            $imgfileName = $file->getClientOriginalName() ;
+            $imgPath = public_path().'/admin/audio/feature_img' ;
+            $file->move($imgPath,$imgfileName);
+    	}
+	
 
 		//
 		if($request->hasFile('audio_file')) {
@@ -41,6 +48,7 @@ class AudioController extends Controller
     	}
 	
     Audio::insert([
+      	'feature_img' => $imgfileName,
       	'audio_file' => $fileName,
         'cat_id' => $request->cat_id,
         'subcat_id' => $request->subcat_id,
@@ -54,7 +62,7 @@ class AudioController extends Controller
     }
 
     public function audiolist(){
-    	$audios = Audio::with('category','subcategory')->get();
+    	$audios = Audio::with('category','subcategory')->paginate(10);
     	return view('admin.audio.listaudio',compact('audios'));
     }
 
@@ -62,12 +70,11 @@ class AudioController extends Controller
 
     public function deleteaudio($id){
     	$audio = Audio::findOrFail($id);
+        unlink("admin/audio/feature_img/".$audio->feature_img);
         if (File::exists(public_path('admin/audio/')).$audio->audio_file) {
             unlink((public_path('admin/audio/')).$audio->audio_file);
           }
        
-	
-
 		Audio::findOrFail($id)->delete();
 
 		

@@ -11,7 +11,7 @@
 					</audio>
 					<h1 class="jamat" >Jamat Times</h1>
 					<div class="row " style="justify-content: center;">
-						<div class="col-4 col-md-3 col-lg-2 text-center border" >
+						{{-- <div class="col-4 col-md-3 col-lg-2 text-center border" >
 							<h5>FAJR</h5>
 							<h3>04:40</h3>
 						</div>
@@ -30,7 +30,8 @@
 						<div class="col-6 col-md-3 col-lg-2 text-center border" >
 							<h5>ISHA</h5>
 							<h3>04:40</h3>
-						</div>
+						</div> --}}
+						<iframe id="iframe" title="prayerWidget" class="widget-m-top" style=" height: 300px; " scrolling="no" src="https://www.islamicfinder.org/prayer-widget/1205733/shafi/3/0/18.0/18.0"> </iframe>
 					</div>
 					<!-- mobile app div -->
 					<!-- 	<h4 style="padding:0px 0px 20px 0px;">Get Mobile App</h4>
@@ -45,8 +46,10 @@
 					</div> -->
 					
 				</div>
-				<div class="col-12 col-lg-4 col-md-4"  style="text-align: center;"  >
-					<h2 style="margin-bottom: 10px;">Next Majlis </h2>
+				<div class="col-12 col-lg-4 col-md-4"  style="text-align: center;    display: flex;
+				flex-direction: column;
+				justify-content: center;"  >
+				<div><h2 style="margin-bottom: 10px;">Next Majlis </h2>
 					
 					<div class="after"> After</div>
 					<div class="timeleft">
@@ -60,9 +63,12 @@
 						</div>
 					</div>
 					<p>Friday Bayan ➤ At Baitul Haq Jame Masjid</p>
-					<a class="btn btn-md" data-bs-toggle="modal" href="#exampleModalToggle" role="button"><i class="fa-solid fa-calendar-days"></i> SCHEDULE & MAP</a>
+					<a class="btn btn-md" data-bs-toggle="modal" href="#exampleModalToggle" role="button"><i class="fa-solid fa-calendar-days"></i> SCHEDULE & MAP</a></div>
+					
 				</div>
-				<div class="col-12 col-lg-4 col-md-4" >
+				<div class="col-12 col-lg-4 col-md-4"  style="    display: flex;
+				flex-direction: column;
+				justify-content: center;">
 					<h2 style="margin-bottom: 15px;text-align: center;">Contact Us </h2>
 					<table style="margin-left: auto; margin-right: auto;">
 						<tbody>

@@ -71,7 +71,7 @@ class BannerController extends Controller
 
     public function deletebanner($id){
     	$banner = Banner::findOrFail($id);
-		unlink($banner->banner);
+		unlink($banner->banner_img);
 		Banner::findOrFail($id)->delete();
 
 		

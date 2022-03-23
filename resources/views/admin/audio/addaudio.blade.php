@@ -65,6 +65,15 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="val-category">Feature Image<span
+                                            class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="file" name="feature_img" class="form-control" >
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label class="col-lg-4 col-form-label" for="val-category">File<span
                                             class="text-danger">*</span>
                                     </label>

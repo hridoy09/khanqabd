@@ -36,6 +36,15 @@ class UserController extends Controller
         return view('frontend.books',compact("logos",'banners'));
         //
     }
+    public function audio()
+    {
+        
+        $logos=Logo::where('status',1)->get();
+        $banners=Banner::where('status',1)->get();
+        return view('frontend.singleaudio',compact("logos",'banners'));
+        //
+    }
+
 
     /**
      * Show the form for creating a new resource.

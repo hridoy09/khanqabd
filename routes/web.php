@@ -8,6 +8,8 @@ use App\Http\Controllers\backend\BannerController;
 use App\Http\Controllers\backend\SubcategoryController;
 use App\Http\Controllers\backend\AudioController;
 use App\Http\Controllers\backend\BookController;
+use App\Http\Controllers\backend\ContactController;
+use App\Http\Controllers\backend\MapController;
 use App\Http\Controllers\CategoryController;
 
 /*
@@ -31,6 +33,7 @@ use App\Http\Controllers\CategoryController;
 Route::get('/', [UserController::class, 'home'])->name('index');
 Route::get('/bayan', [UserController::class, 'bayan'])->name('bayan');
 Route::get('/book', [UserController::class, 'book'])->name('book');
+Route::get('/audio', [UserController::class, 'audio'])->name('audio');
 
 
 Auth::routes();
@@ -43,6 +46,8 @@ Route::group(['middleware'=>['auth']], function(){
 
 	Route::resource('category', CategoryController::class);
 	Route::resource('subcategory', SubcategoryController::class);
+	Route::resource('contact', ContactController::class);
+	Route::resource('modal', MapController::class);
 
 Route::prefix('logo')->group(function(){
 	// Route::get('/add', [LogoController::class, 'addlogo'])->name('logo.add');
