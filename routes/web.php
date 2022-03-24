@@ -10,7 +10,11 @@ use App\Http\Controllers\backend\AudioController;
 use App\Http\Controllers\backend\BookController;
 use App\Http\Controllers\backend\ContactController;
 use App\Http\Controllers\backend\MapController;
+use App\Http\Controllers\backend\ProductController;
+use App\Http\Controllers\backend\RoleController;
+use App\Http\Controllers\backend\UserController as BuserController;
 use App\Http\Controllers\CategoryController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +44,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/dashboard',  [HomeController::class, 'index'])->name('home')->middleware('auth');
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', BUserController::class);
+    Route::resource('products', ProductController::class);
+});
 
 
 Route::group(['middleware'=>['auth']], function(){
