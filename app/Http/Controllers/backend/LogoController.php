@@ -10,6 +10,13 @@ Use Carbon\Carbon;
 
 class LogoController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:user-list|user-create|logo-edit|logo-delete', ['only' => ['logolist','store']]);
+         $this->middleware('permission:logo-create', ['only' => ['addlogo','storelogo']]);
+         $this->middleware('permission:logo-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:logo-delete', ['only' => ['deletelogo']]);
+    }
     public function addlogo(){
     	return view('admin.logo.addlogo');
     }

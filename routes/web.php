@@ -10,10 +10,12 @@ use App\Http\Controllers\backend\AudioController;
 use App\Http\Controllers\backend\BookController;
 use App\Http\Controllers\backend\ContactController;
 use App\Http\Controllers\backend\MapController;
+use App\Http\Controllers\backend\PermissionController;
 use App\Http\Controllers\backend\ProductController;
 use App\Http\Controllers\backend\RoleController;
 use App\Http\Controllers\backend\UserController as BuserController;
 use App\Http\Controllers\CategoryController;
+use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -38,6 +40,7 @@ Route::get('/', [UserController::class, 'home'])->name('index');
 Route::get('/bayan', [UserController::class, 'bayan'])->name('bayan');
 Route::get('/book', [UserController::class, 'book'])->name('book');
 Route::get('/audio', [UserController::class, 'audio'])->name('audio');
+Route::get('audio-by-subcat/{id}', [UserController::class, 'audioBySubcatId'])->name('audio_by_subcat');
 
 
 Auth::routes();
@@ -58,6 +61,7 @@ Route::group(['middleware'=>['auth']], function(){
 	Route::resource('subcategory', SubcategoryController::class);
 	Route::resource('contact', ContactController::class);
 	Route::resource('modal', MapController::class);
+	Route::resource('permission', PermissionController::class);
 
 Route::prefix('logo')->group(function(){
 	// Route::get('/add', [LogoController::class, 'addlogo'])->name('logo.add');

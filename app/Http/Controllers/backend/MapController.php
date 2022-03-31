@@ -8,6 +8,14 @@ use App\Models\Map;
 
 class MapController extends Controller
 {
+
+    function __construct()
+    {
+         $this->middleware('permission:map-list|map-create|map-edit|map-delete', ['only' => ['index','store']]);
+         $this->middleware('permission:map-create', ['only' => ['create','store']]);
+         $this->middleware('permission:map-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:map-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

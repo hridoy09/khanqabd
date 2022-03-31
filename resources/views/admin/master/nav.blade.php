@@ -14,6 +14,7 @@
       </ul>
       <div class="pcoded-navigation-label">Administration</div>
       <ul class="pcoded-item pcoded-left-item">
+        
         <li class="pcoded-hasmenu ">
           <a href="javascript:void(0)" class="waves-effect waves-dark">
             <span class="pcoded-micon">
@@ -32,8 +33,134 @@
                 <span class="pcoded-mtext">Category List</span>
               </a>
             </li>
+            <li class="">
+              <a href="{{route('subcategory.create')}}" class="waves-effect waves-dark">
+                <span class="pcoded-mtext">Add Subcategory</span>
+              </a>
+            </li>
+            <li class="">
+              <a href="{{route('subcategory.index')}}" class="waves-effect waves-dark">
+                <span class="pcoded-mtext">Subcategory List</span>
+              </a>
+            </li>
+          
           </ul>
+        
         </li>
+        <li class="pcoded-hasmenu ">
+        <a href="{{route('logo.list')}}" class="waves-effect waves-dark">
+          <span class="pcoded-micon">
+            <i class="feather icon-list"></i>
+          </span>
+          <span class="pcoded-mtext">Logo List</span>
+        </a>
+        </li>
+
+        <li class="pcoded-hasmenu ">
+          <a href="javascript:void(0)" class="waves-effect waves-dark">
+            <span class="pcoded-micon">
+              <i class="feather icon-list"></i>
+            </span>
+            <span class="pcoded-mtext">Banner</span>
+          </a>
+          <ul class="pcoded-submenu">
+            <li class="">
+              <a href="{{route('banner.add')}}" class="waves-effect waves-dark">
+                <span class="pcoded-mtext">Add Banner</span>
+              </a>
+            </li>
+            <li class="">
+              <a href="{{route('banner.list')}}" class="waves-effect waves-dark">
+                <span class="pcoded-mtext">Banner List</span>
+              </a>
+            </li>
+         
+          
+          </ul>
+        
+        </li>
+        <li class="pcoded-hasmenu ">
+          <a href="javascript:void(0)" class="waves-effect waves-dark">
+            <span class="pcoded-micon">
+              <i class="feather icon-list"></i>
+            </span>
+            <span class="pcoded-mtext">Audio</span>
+          </a>
+          <ul class="pcoded-submenu">
+            <li class="">
+              <a href="{{route('audio.add')}}" class="waves-effect waves-dark">
+                <span class="pcoded-mtext">Add Audio</span>
+              </a>
+            </li>
+            <li class="">
+              <a href="{{route('audio.list')}}" class="waves-effect waves-dark">
+                <span class="pcoded-mtext">Audio List</span>
+              </a>
+            </li>
+       
+          
+          </ul>
+        
+        </li>
+        <li class="pcoded-hasmenu ">
+          <a href="javascript:void(0)" class="waves-effect waves-dark">
+            <span class="pcoded-micon">
+              <i class="feather icon-list"></i>
+            </span>
+            <span class="pcoded-mtext">Book</span>
+          </a>
+          <ul class="pcoded-submenu">
+            <li class="">
+              <a href="{{route('book.add')}}" class="waves-effect waves-dark">
+                <span class="pcoded-mtext">Add Book</span>
+              </a>
+            </li>
+            <li class="">
+              <a href="{{route('book.list')}}" class="waves-effect waves-dark">
+                <span class="pcoded-mtext">Book List</span>
+              </a>
+            </li>
+       
+          
+          </ul>
+        
+        </li>
+        <li class="pcoded-hasmenu ">
+          <a href="javascript:void(0)" class="waves-effect waves-dark">
+            <span class="pcoded-micon">
+              <i class="feather icon-list"></i>
+            </span>
+            <span class="pcoded-mtext">Modal</span>
+          </a>
+          <ul class="pcoded-submenu">
+            <li class="">
+              <a href="{{route('modal.create')}}" class="waves-effect waves-dark">
+                <span class="pcoded-mtext">Add Info</span>
+              </a>
+            </li>
+            <li class="">
+              <a href="{{route('modal.index')}}" class="waves-effect waves-dark">
+                <span class="pcoded-mtext">info List</span>
+              </a>
+            </li>
+       
+          
+          </ul>
+        
+        </li>
+        <li class="pcoded-hasmenu ">
+          <a href="{{route('roles.index')}}" class="waves-effect waves-dark">
+            <span class="pcoded-micon">
+              <i class="feather icon-list"></i>
+            </span>
+            <span class="pcoded-mtext">Roles Create</span>
+          </a>
+          </li>
+          <li><a class="nav-link" href="{{ route('users.index') }}">Manage Users</a></li>
+          <li><a class="nav-link" href="{{ route('roles.create') }}">Role Create</a></li>
+          <li><a class="nav-link" href="{{ route('roles.index') }}">Manage Role</a></li>
+          
+     
       </ul>
     </div>
   </div>

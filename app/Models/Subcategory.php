@@ -18,4 +18,14 @@ class Subcategory extends Model
     {
         return $this->hasOne(Category::class, 'id', 'cat_id');
     }
+
+    /**
+     * Get all of the comments for the Subcategory
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function audios()
+    {
+        return $this->hasMany(Audio::class, 'subcat_id', 'id');
+    }
 }

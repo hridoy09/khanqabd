@@ -10,6 +10,15 @@ Use Carbon\Carbon;
 
 class BannerController extends Controller
 {
+    
+    function __construct()
+    {
+         $this->middleware('permission:banner-list|banner-create|banner-edit|banner-delete', ['only' => ['bannerlist','show']]);
+         $this->middleware('permission:banner-create', ['only' => ['addbanner','storebanner']]);
+         $this->middleware('permission:banner-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:banner-delete', ['only' => ['deletebanner']]);
+    }
+ 
     public function addbanner(){
     	return view('admin.banner.addbanner');
     }

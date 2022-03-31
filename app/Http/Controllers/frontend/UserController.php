@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Audio;
 use Illuminate\Http\Request;
 use App\Models\Logo;
 use App\Models\Banner;
+use App\Models\Subcategory;
+
 class UserController extends Controller
 {
     /**
@@ -17,7 +20,9 @@ class UserController extends Controller
     {
         $logos=Logo::where('status',1)->get();
         $banners=Banner::where('status',1)->get();
-        return view('frontend.index', compact("logos",'banners'));
+        $subcategories=Subcategory::with('audios')->get();
+       
+        return view('frontend.index', compact("logos",'banners', 'subcategories'));
         //
     }
     public function bayan()
@@ -110,5 +115,14 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function audioBySubcatId($id)
+    {
+        $logos=Logo::where('status',1)->get();
+        $banners=Banner::where('status',1)->get();
+        $audios=Audio::whereSubcatId($id)->paginate(15);
+        return view('frontend.bayan', compact("logos",'banners','audios'));
+
     }
 }

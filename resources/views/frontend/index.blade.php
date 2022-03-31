@@ -119,66 +119,22 @@
 				</div>
 			</div>
 			<div class="row" style="margin: 0px; padding: 0px;">
+				@foreach ($subcategories as $subcategory )
 				<div class="col-12 col-md-6 col-lg-4 audio_list"  >
-					<h5>Juma Lectures</h5>
+					<h5>{{$subcategory->subcat_name}}</h5>
 					<p>(Before J0  uma Bayan and After Juma Majlis)</p>
-					<a href="" style="border-bottom:1px solid grey; padding-bottom: 5px;">18-2-2022 After Juma Mou Rizwan Sb .mp3</a><a style="float: right;" href=""><i class="fa-solid fa-download"></i></a>
+					@foreach ($subcategory->audios as $audio)
+					<a href="" style="border-bottom:1px solid grey; padding-bottom: 5px;">{{$audio->audio_file}}</a><a style="float: right;" href="{{asset('admin/audio/'.$audio->audio_file)}}" download="{{asset('admin/audio/'.$audio->audio_file)}}"><i class="fa-solid fa-download"></i></a>
+					@endforeach
+					
 					<div style="margin: 30px;">
-						<a class="btn btn-success" href="">view More</a>
-					</div>
-					
-					
-					
-				</div>
-				<div class="col-12 col-md-6 col-lg-4 audio_list"  >
-					<h5>Juma Lectures</h5>
-					<p>(Before J0  uma Bayan and After Juma Majlis)</p>
-					<a href="" style="border-bottom:1px solid grey; padding-bottom: 5px;">18-2-2022 After Juma Mou Rizwan Sb .mp3</a><a style="float: right;" href=""><i class="fa-solid fa-download"></i></a>
-					<div style="margin: 30px;">
-						<a class="btn btn-success" href="">view More</a>
+						<a class="btn btn-success" href="{{route('audio_by_subcat', $subcategory->id)}}">view More</a>
 					</div>
 					
 				</div>
-				<div class="col-12 col-md-6 col-lg-4 audio_list"  >
-					<h5>Juma Lectures</h5>
-					<p>(Before J0  uma Bayan and After Juma Majlis)</p>
-					<a href="" style="border-bottom:1px solid grey; padding-bottom: 5px;">18-2-2022 After Juma Mou Rizwan Sb .mp3</a><a style="float: right;" href=""><i class="fa-solid fa-download"></i></a>
-					<div style="margin: 30px;">
-						<a class="btn btn-success" href="">view More</a>
-					</div>
-					
-				</div>
+				@endforeach
 				
-			</div>
 			
-			<div class="row" style="margin: 60px 0px; padding: 0px;">
-				<div class="col-12 col-md-6 col-lg-4 audio_list"  >
-					<h5>Juma Lectures</h5>
-					<p>(Before J0  uma Bayan and After Juma Majlis)</p>
-					<a href="" style="border-bottom:1px solid grey; padding-bottom: 5px;">18-2-2022 After Juma Mou Rizwan Sb .mp3</a><a style="float: right;" href=""><i class="fa-solid fa-download"></i></a>
-					<div style="margin: 30px;">
-						<a class="btn btn-success" href="">view More</a>
-					</div>
-					
-				</div>
-				<div class="col-12 col-md-6 col-lg-4 audio_list"  >
-					<h5>Juma Lectures</h5>
-					<p>(Before J0  uma Bayan and After Juma Majlis)</p>
-					<a href="" style="border-bottom:1px solid grey; padding-bottom: 5px;">18-2-2022 After Juma Mou Rizwan Sb .mp3</a><a style="float: right;" href=""><i class="fa-solid fa-download"></i></a>
-					<div style="margin: 30px;">
-						<a class="btn btn-success" href="">view More</a>
-					</div>
-					
-				</div>
-				<div class="col-12 col-md-6 col-lg-4 audio_list"  >
-					<h5>Juma Lectures</h5>
-					<p>(Before J0  uma Bayan and After Juma Majlis)</p>
-					<a href="" style="border-bottom:1px solid grey; padding-bottom: 5px;">18-2-2022 After Juma Mou Rizwan Sb .mp3</a><a style="float: right;" href=""><i class="fa-solid fa-download"></i></a>
-					<div style="margin: 30px;">
-						<a class="btn btn-success" href="">view More</a>
-					</div>
-					
-				</div>
 				
 			</div>
 			<div class="parent">

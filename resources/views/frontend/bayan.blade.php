@@ -26,22 +26,21 @@
 					</thead>
 					<tbody>
 
+            {{-- @dd($subcategory->audios) --}}
 
-
-						<tr>
-							<td data-title="Id">19</td>
-							<td data-title="Date">08-03-2022</td>
-							<td data-title="Age"><a href="#">4-3-2022 Jindagisaz Ilhami Bayan After Esha Ghurfa Karachi udtyensb fhasdjfl</a></td>
+            @foreach ($audios as $audio )
+            <tr>
+							<td data-title="Id">{{$loop->iteration}}</td>
+							<td data-title="Date">{{$audio->created_at}}</td>
+							<td data-title="Age"><a href="#">{{$audio->audio_file}}</a></td>
 							
               <td class="baya__download__size"  data-title="Size">20.25 MB</td>
-							<td class="baya__download__size" data-title="Download"><a href="3"><i class="fa fa-download" aria-hidden="true"></i>
+							<td class="baya__download__size" data-title="Download"><a href="{{asset('admin/audio/'.$audio->audio_file)}}" download="{{asset('admin/audio/'.$audio->audio_file)}}"><i class="fa fa-download" aria-hidden="true"></i>
 							</a>
             </td>	
 						</tr>
-
-						
-          
-            
+            @endforeach
+					
 					</tbody>
 				</table>
 			</div>
@@ -53,30 +52,9 @@
       <!-- End Bayan Table Section -->
 
       <!-- Start Bayan Table Pagination -->
-
-      <div class="pagination">
-
-          <nav aria-label="Page navigation example m-t-10">
-              <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-
-        </div>    
-
+     @if( count($audios) > 0 )
+     {!! $audios->links() !!}
+ @endif 
        <!-- End Bayan Table Pagination -->
 <!-- End Bayan Section -->
 

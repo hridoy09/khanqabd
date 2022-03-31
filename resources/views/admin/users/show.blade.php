@@ -1,6 +1,5 @@
 
-@extends('layouts.app')
-
+@extends('admin.master.main')
 
 @section('content')
 <div class="row">

@@ -14,6 +14,13 @@ use File;
 
 class BookController extends Controller
 {
+  function __construct()
+  {
+       $this->middleware('permission:user-list|user-create|book-edit|book-delete', ['only' => ['booklist','store']]);
+       $this->middleware('permission:book-create', ['only' => ['addbook','storebook']]);
+       $this->middleware('permission:book-edit', ['only' => ['edit','update']]);
+       $this->middleware('permission:book-delete', ['only' => ['deletebook']]);
+  }
     public function addbook()
     {
         $categories=Category::all();
@@ -112,7 +119,7 @@ class BookController extends Controller
             $file = $request->file('feature_img') ;
             $imgfileName = $file->getClientOriginalName() ;
             $imgPath = public_path().'/admin/book_feature_img' ;
-            $file->move($destinationPath,$fileName);
+            $file->move($imgPath,$imgfileName);
     	}
         if($request->hasFile('pdf_file')) {
             $file = $request->file('pdf_file') ;
