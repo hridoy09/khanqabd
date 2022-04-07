@@ -46,7 +46,7 @@
 								<tbody>
 									@foreach($all_subcategory as $subcategory)
 									<tr>
-										<th scope="row">1</th>
+										<th scope="row">{{$loop->iteration}}</th>
 										<td>{{$subcategory->category->name}}</td>
 										<td>{{$subcategory->subcat_name}}</td>
 										<td>
@@ -62,6 +62,11 @@
 									@endforeach
 								</tbody>
 							</table>
+						</div>
+						@if( count($all_subcategory) > 0 )
+						{!! $all_subcategory->links() !!}
+					@endif 
+				   
 						</div>
 					</div>
 				</div>

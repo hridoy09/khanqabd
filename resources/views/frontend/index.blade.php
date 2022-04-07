@@ -74,15 +74,15 @@
 						<tbody>
 							<tr class="contact-tr">
 								<td class="con_icon"><i style="color: green;" class="fa-brands fa-whatsapp"></i></td>
-								<td style= "text-align left"><a class="contact" href="https://wa.me/+8801752742031">(+880)-1752-74-20-31</a></td>
+								<td style= "text-align left"><a class="contact" href="https://wa.me/{{$contacts->whatsapp_no}}">{{$contacts->whatsapp_no}}</a></td>
 							</tr>
 							<tr class="contact-tr">
 								<td  class="con_icon"><i style="color:skyblue" class="fa-brands fa-telegram"></i></td>
-								<td style= "text-align left"><a  class="contact" href="https://wa.me/+8801752742031">(+880)-1752-74-20-31</a></td>
+								<td style= "text-align left"><a  class="contact" href="">{{$contacts->telegram_link}}</a></td>
 							</tr>
 							<tr class="contact-tr">
 								<td  class="con_icon"><i style="color: #d54537;" class="fa-solid fa-envelope"></i></td>
-								<td style= "text-align left"><a  class="contact" href="#">xyz@gmail.com</a></td>
+								<td style= "text-align left"><a  class="contact" href="mailto:{{$contacts->gmail}}">{{$contacts->gmail}}</a></td>
 							</tr>
 						</tbody>
 					</table>
@@ -119,7 +119,10 @@
 				</div>
 			</div>
 			<div class="row" style="margin: 0px; padding: 0px;">
-				@foreach ($subcategories as $subcategory )
+				@php
+					$subcategoriesFirst = $subcategories->take(6);
+				@endphp
+				@foreach ($subcategoriesFirst as $subcategory )
 				<div class="col-12 col-md-6 col-lg-4 audio_list"  >
 					<h5>{{$subcategory->subcat_name}}</h5>
 					<p>(Before J0  uma Bayan and After Juma Majlis)</p>
@@ -190,104 +193,56 @@
 				</div>
 			</div>
 			
-			<div class="row" style="margin: 60px 0px; padding: 10px 0px;   background: beige;
-				">
+			<div class="row" style="margin: 60px 0px; padding: 10px 0px;   background: beige;">
+				@php
+				$subcategoriesMiddle = App\Models\Subcategory::with('audios')->whereHas('audios')->latest()->take(4)->get();
+				
+			@endphp
+				@foreach ($subcategoriesMiddle as $subcategory )
+				@if (!$subcategoriesFirst->contains($subcategory->id))
+				
 				<div class="col-12 col-md-6 col-lg-3 audio_list"  >
-					<h5>Juma Lectures</h5>
+					<h5>{{$subcategory->subcat_name}}</h5>
 					<p>(Before J0  uma Bayan and After Juma Majlis)</p>
-					<a href="" style="border-bottom:1px solid grey; padding-bottom: 5px;">18-2-2022 After Juma Mou Rizwan Sb .mp3</a>
+					@foreach ($subcategory->audios as $audio)
+					<a href="" style="border-bottom:1px solid grey; padding-bottom: 5px;">{{$audio->audio_file}}</a>
+					@endforeach
+				
 					<div style="margin: 30px;">
-						<a class="btn btn-success" href="">view More</a>
+						<a class="btn btn-success" href="{{route('audio_by_subcat', $subcategory->id)}}">view More</a>
 					</div>
 					
 				</div>
-				<div class="col-12 col-md-6 col-lg-3 audio_list"  >
-					<h5>Juma Lectures</h5>
-					<p>(Before J0  uma Bayan and After Juma Majlis)</p>
-					<a href="" style="border-bottom:1px solid grey; padding-bottom: 5px;">18-2-2022 After Juma Mou Rizwan Sb .mp3</a>
-					<div style="margin: 30px;">
-						<a class="btn btn-success" href="">view More</a>
-					</div>
-					
-				</div>
-				<div class="col-12 col-md-6 col-lg-3 audio_list"  >
-					<h5>Juma Lectures</h5>
-					<p>(Before J0  uma Bayan and After Juma Majlis)</p>
-					<a href="" style="border-bottom:1px solid grey; padding-bottom: 5px;">18-2-2022 After Juma Mou Rizwan Sb .mp3</a>
-					<div style="margin: 30px;">
-						<a class="btn btn-success" href="">view More</a>
-					</div>
-					
-				</div>
-				<div class="col-12 col-md-6 col-lg-3 audio_list"  >
-					<h5>Juma Lectures</h5>
-					<p>(Before J0  uma Bayan and After Juma Majlis)</p>
-					<a href="" style="border-bottom:1px solid grey; padding-bottom: 5px;">18-2-2022 After Juma Mou Rizwan Sb .mp3</a>
-					<div style="margin: 30px;">
-						<a class="btn btn-success" href="">view More</a>
-					</div>
-					
-				</div>
+				@endif
+				
+				@endforeach
+			
+		
 				
 			</div>
 			<div>
 				<h3 style="text-align:center;">Book's</h3>
 			</div>
 			<div class="wrapper">
-				<!-- Контент -->
+			
 				<div class="slider">
-					<a href="">
+				
+					@foreach ($books as $book )
+					<a href="{{asset('admin/book/'.$book->pdf_file)}}" type="application/pdf">
 						<div class="slider__item">
-							<img src="https://i.etsystatic.com/9970942/d/il/3eb7fe/1455383965/il_340x270.1455383965_t5ez.jpg?version=0"
+							<img src="{{asset('admin/book_feature_img/'.$book->feature_img)}}"
 							alt="">
 						</div>
 					</a>
-					<a href="">
-						<div class="slider__item">
-							<img src="https://i.etsystatic.com/9970942/d/il/3eb7fe/1455383965/il_340x270.1455383965_t5ez.jpg?version=0"
-							alt="">
-						</div>
-					</a>
-					<a href="">
-						<div class="slider__item">
-							<img src="https://i.etsystatic.com/9970942/d/il/3eb7fe/1455383965/il_340x270.1455383965_t5ez.jpg?version=0"
-							alt="">
-						</div>
-					</a>
-					<a href="">
-						<div class="slider__item">
-							<img src="https://i.etsystatic.com/9970942/d/il/3eb7fe/1455383965/il_340x270.1455383965_t5ez.jpg?version=0"
-							alt="">
-						</div>
-					</a>
-					<a href="">
-						<div class="slider__item">
-							<img src="https://i.etsystatic.com/9970942/d/il/3eb7fe/1455383965/il_340x270.1455383965_t5ez.jpg?version=0"
-							alt="">
-						</div>
-					</a>
-					<a href="">
-						<div class="slider__item">
-							<img src="https://i.etsystatic.com/9970942/d/il/3eb7fe/1455383965/il_340x270.1455383965_t5ez.jpg?version=0"
-							alt="">
-						</div>
-					</a>
-					<a href="">
-						<div class="slider__item">
-							<img src="https://i.etsystatic.com/9970942/d/il/3eb7fe/1455383965/il_340x270.1455383965_t5ez.jpg?version=0"
-							alt="">
-						</div>
-					</a>
-					<a href="">
-						<div class="slider__item">
-							<img src="https://i.etsystatic.com/9970942/d/il/3eb7fe/1455383965/il_340x270.1455383965_t5ez.jpg?version=0"
-							alt="">
-						</div>
-					</a>
+					
+					@endforeach
+				
+				
+
 				</div>
 			</div>
 			<div style="text-align: center;">
-				<a class="btn btn-success" href="">MORE BOOKS (BANGLA, URDU, ENGLISH)</a>
+				<a class="btn btn-success" href="{{route('book')}}">MORE BOOKS (BANGLA, URDU, ENGLISH)</a>
 			</div>
 			<div class="row" style="margin: 20px 0px;box-shadow: 0px 0px 10px;
 				padding: 30px 0px;">
@@ -338,24 +293,24 @@
 					<div class="modal-body">
 						<div style="border-bottom:1px solid grey; padding-bottom: 5px;">
 							<div style="border-bottom: 1px solid grey;margin: 10px;">
-								<h5>Friday Bayan (Bait ul Haq Jamia Masjid)</h5>
+								<h5>{{$modals->first_bayan}}</h5>
 								<ul class="list_style">
-									<li>Before Juma Bayan (1pm BST)</li>
-									<li>After Juma Majlis (2:15pm BST)</li>
+									<li>{{$modals->first_bayan_1st_time}}</li>
+									<li>{{$modals->first_bayan_2nd_time}}</li>
 								</ul>
 							</div>
 							<div style="border-bottom: 1px solid grey;margin: 10px;">
-								<h5>Tuesday Bayan</h5>
+								<h5>{{$modals->second_bayan}}</h5>
 								<ul class="list_style">
-									<li>Before Juma Bayan (1pm BST)</li>
+									<li>{{$modals->second_bayan_time}}</li>
 								</ul>
 							</div>
 							<div style="margin: 10px;">
-								<h5>Monthly Ijtima</h5>
+								<h5>{{$modals->thied_bayan}}</h5>
 								<ul class="list_style">
-									<li>Before Juma Bayan (1pm BST)</li>
+									<li>{{$modals->third_bayan_time}}</li>
 								</ul>
-								<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3689.6050692633435!2d91.84479151538632!3d22.368536246066117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd9931c81e8c5%3A0xee22258ed120597!2sCoders%20Point!5e0!3m2!1sbn!2sbd!4v1645083948104!5m2!1sbn!2sbd" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+								<iframe src="{{$modals->iframe_link}}" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 							</div>
 							
 						</div>

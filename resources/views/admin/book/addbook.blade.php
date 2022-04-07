@@ -49,6 +49,7 @@
 
                                     </div>
                                 </div>
+                            
                                 <div class="form-group row">
                                     <label class="col-lg-4 col-form-label" for="val-category">Subcategory Name<span
                                             class="text-danger">*</span>
@@ -61,6 +62,15 @@
 
                                          
                                      </select>
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="val-category">Book Category<span
+                                            class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                     <input type="text" class="form-control" name="book_cat" >
 
                                     </div>
                                 </div>

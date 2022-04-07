@@ -26,6 +26,7 @@
                                         <th>Serial No </th>
                                         <th>Category Name </th>
                                         <th>Subcategory name</th>
+                                        <th>Book category</th>
                                         <th>Feature Image</th>
                                         <th>book File</th>
                                         <th>Action</th>
@@ -36,6 +37,7 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$book->category->name}}</td>
                                     <td>{{$book->subcategory->subcat_name}}</td>
+                                    <td>{{$book->book_cat}}</td>
                                     <td>{{$book->feature_img}}</td>
                                     <td>{{$book->pdf_file}}</td>
                              

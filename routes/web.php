@@ -15,6 +15,7 @@ use App\Http\Controllers\backend\ProductController;
 use App\Http\Controllers\backend\RoleController;
 use App\Http\Controllers\backend\UserController as BuserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DocumentController;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,10 +38,11 @@ use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/', [UserController::class, 'home'])->name('index');
-Route::get('/bayan', [UserController::class, 'bayan'])->name('bayan');
-Route::get('/book', [UserController::class, 'book'])->name('book');
-Route::get('/audio', [UserController::class, 'audio'])->name('audio');
+Route::get('bayan', [UserController::class, 'bayan'])->name('bayan');
+Route::get('books', [UserController::class, 'book'])->name('book');
+Route::get('audio', [UserController::class, 'audio'])->name('audio');
 Route::get('audio-by-subcat/{id}', [UserController::class, 'audioBySubcatId'])->name('audio_by_subcat');
+Route::get('book-by-cat/{book_cat}', [UserController::class, 'bookBycatId'])->name('book_by_cat');
 
 
 Auth::routes();
@@ -94,10 +96,18 @@ Route::prefix('book')->group(function(){
 	Route::get('/add', [BookController::class, 'addbook'])->name('book.add');
 	Route::post('/store', [BookController::class, 'storebook'])->name('book.store');
 	Route::get('/all-files', [BookController::class, 'booklist'])->name('book.list');
-
 	Route::get('/delete/{id}', [BookController::class, 'deletebook']);
 	Route::get('/edit/{id}', [BookController::class, 'edit'])->name('book.edit');
 	Route::post('/update/{id}', [BookController::class, 'update'])->name('book.update');
+});
+
+Route::prefix('document')->group(function(){
+	Route::get('/add', [DocumentController::class, 'adddocument'])->name('document.add');
+	Route::post('/store', [DocumentController::class, 'storedocument'])->name('document.store');
+	Route::get('/all-files', [DocumentController::class, 'documentlist'])->name('document.list');
+	Route::get('/delete/{id}', [DocumentController::class, 'deletedocument']);
+	Route::get('/edit/{id}', [DocumentController::class, 'edit'])->name('document.edit');
+	Route::post('/update/{id}', [DocumentController::class, 'update'])->name('document.update');
 });
 
 });

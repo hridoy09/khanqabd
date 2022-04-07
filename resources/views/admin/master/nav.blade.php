@@ -107,6 +107,24 @@
             <span class="pcoded-micon">
               <i class="feather icon-list"></i>
             </span>
+            <span class="pcoded-mtext">Contact</span>
+          </a>
+          <ul class="pcoded-submenu">
+            <li class="">
+              <a href="{{route('contact.index')}}" class="waves-effect waves-dark">
+                <span class="pcoded-mtext">Contact List</span>
+              </a>
+            </li>
+       
+          
+          </ul>
+        
+        </li>
+        <li class="pcoded-hasmenu ">
+          <a href="javascript:void(0)" class="waves-effect waves-dark">
+            <span class="pcoded-micon">
+              <i class="feather icon-list"></i>
+            </span>
             <span class="pcoded-mtext">Book</span>
           </a>
           <ul class="pcoded-submenu">

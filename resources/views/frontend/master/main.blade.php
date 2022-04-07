@@ -65,7 +65,7 @@ $(document).ready(function() {
 $(".slider").slick({
 arrows: true,
 dots: false,
-slidesToShow: 6,
+slidesToShow: 4,
 autoplay: true,
 speed: 900,
 autoplaySpeed: 700,

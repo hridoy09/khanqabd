@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('cat_id');
             $table->integer('subcat_id');
+            $table->string('book_cat');
             $table->string('feature_img');
             $table->string('pdf_file');
             $table->timestamps();

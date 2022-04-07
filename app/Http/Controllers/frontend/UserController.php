@@ -7,7 +7,10 @@ use App\Models\Audio;
 use Illuminate\Http\Request;
 use App\Models\Logo;
 use App\Models\Banner;
+use App\Models\Book;
 use App\Models\Subcategory;
+use App\Models\Contact;
+use App\Models\Map;
 
 class UserController extends Controller
 {
@@ -20,9 +23,12 @@ class UserController extends Controller
     {
         $logos=Logo::where('status',1)->get();
         $banners=Banner::where('status',1)->get();
-        $subcategories=Subcategory::with('audios')->get();
-       
-        return view('frontend.index', compact("logos",'banners', 'subcategories'));
+        $subcategories=Subcategory::with('audios')->whereHas('audios')->get();
+       $books=Book::all();
+       $contacts=Contact::latest()->first();
+       $modals=Map::latest()->first();
+     
+        return view('frontend.index', compact("logos",'banners', 'subcategories','books','contacts','modals'));
         //
     }
     public function bayan()
@@ -30,6 +36,7 @@ class UserController extends Controller
         
         $logos=Logo::where('status',1)->get();
         $banners=Banner::where('status',1)->get();
+        
         return view('frontend.bayan', compact("logos",'banners'));
         //
     }
@@ -38,9 +45,22 @@ class UserController extends Controller
         
         $logos=Logo::where('status',1)->get();
         $banners=Banner::where('status',1)->get();
-        return view('frontend.books',compact("logos",'banners'));
+        $books=Book::paginate(30);
+
+        return view('frontend.books',compact("logos",'banners','books'));
         //
     }
+    public function bookBycatId($bookCat)
+    {
+        
+        $logos=Logo::where('status',1)->get();
+        $banners=Banner::where('status',1)->get();
+        $books=Book::where('book_cat', $bookCat)->get();
+        // return view('frontend.books',compact("logos",'banners','books'));
+        return $books;
+        //
+    }
+
     public function audio()
     {
         
@@ -121,8 +141,9 @@ class UserController extends Controller
     {
         $logos=Logo::where('status',1)->get();
         $banners=Banner::where('status',1)->get();
-        $audios=Audio::whereSubcatId($id)->paginate(15);
+        $audios=Audio::whereSubcatId($id)->paginate(15); 
         return view('frontend.bayan', compact("logos",'banners','audios'));
 
     }
+  
 }

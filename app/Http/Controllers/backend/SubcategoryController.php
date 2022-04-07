@@ -23,8 +23,8 @@ class SubcategoryController extends Controller
     public function index()
     {
         $all_subcategory = Subcategory::paginate(10);
-        $count = 1;
-        return view('admin.subcategory.subcategory_list',compact('all_subcategory','count'));
+      
+        return view('admin.subcategory.subcategory_list',compact('all_subcategory'));
     }
 
     /**

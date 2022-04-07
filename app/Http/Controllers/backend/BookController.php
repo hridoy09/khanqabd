@@ -32,6 +32,7 @@ class BookController extends Controller
     	$validateData = $request->validate([
             'cat_id' => 'required',
             'subcat_id' => 'required',
+            'book_cat' => 'required',
             
            
     	
@@ -65,6 +66,7 @@ class BookController extends Controller
       	'pdf_file' => $fileName,
         'cat_id' => $request->cat_id,
         'subcat_id' => $request->subcat_id,
+        'book_cat' => $request->book_cat,
       	'created_at' => Carbon::now(),
   	 ]);
     	$notification = array(

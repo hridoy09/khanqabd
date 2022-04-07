@@ -28,4 +28,6 @@ class Subcategory extends Model
     {
         return $this->hasMany(Audio::class, 'subcat_id', 'id');
     }
+   
+   
 }
