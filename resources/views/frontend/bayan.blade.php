@@ -28,7 +28,7 @@
 
             {{-- @dd($subcategory->audios) --}}
 
-            @foreach ($audios as $audio )
+            @foreach ($audios  as $audio )
             <tr>
 							<td data-title="Id">{{$loop->iteration}}</td>
 							<td data-title="Date">{{$audio->created_at}}</td>

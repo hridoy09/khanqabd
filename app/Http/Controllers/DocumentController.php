@@ -66,6 +66,7 @@ class DocumentController extends Controller
   
       public function deletedocument($id){
           $document = Document::findOrFail($id);
+        
             if (File::exists(public_path('admin/document/')).$document->document_file) {
               unlink((public_path('admin/document/')).$document->document_file);
             }

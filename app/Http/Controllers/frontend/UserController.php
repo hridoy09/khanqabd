@@ -36,8 +36,17 @@ class UserController extends Controller
         
         $logos=Logo::where('status',1)->get();
         $banners=Banner::where('status',1)->get();
+        $audios=Audio::all();
+        return view('frontend.bayan', compact("logos",'banners','audios'));
+        //
+    }
+    public function singleaudio()
+    {
         
-        return view('frontend.bayan', compact("logos",'banners'));
+        $logos=Logo::where('status',1)->get();
+        $banners=Banner::where('status',1)->get();
+        
+        return view('frontend.audio', compact("logos",'banners'));
         //
     }
     public function book()

@@ -614,3 +614,54 @@ a {
         max-width: 800px!important;
     }
 }
+
+.styles_main {
+    margin: 40px;
+    padding: 20px;
+    background: #fff;
+}
+
+.audio_text {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.audio_text h1 {
+    letter-spacing: 1px;
+    color: #013030;
+    font-weight: 500;
+    font-size: 26px;
+}
+
+.audio {
+    text-align: center;
+}
+
+.audio_bck {
+    width: 80%!important;
+    background: #0d4c4c !important;
+    background-image: none !important;
+    background-image: url(/5bbcde0a05f1ce7e389f577548c9dee7.png!important);
+}
+
+.table-section2 {
+    padding-top: 20px;
+}
+
+.audio_btn {
+    text-align: center;
+}
+
+.btn-primary {
+    color: #212529;
+    background: #0b3027!important;
+    background: #0b3027!important;
+}
+
+.btn-primary:hover {
+    color: rgb(211, 29, 29);
+    text-decoration: none;
+}
+
+
+/* End styles_main */
