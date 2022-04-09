@@ -8,17 +8,20 @@ use Illuminate\Http\Request;
 use App\Models\Logo;
 use App\Models\Banner;
 use App\Models\Book;
+use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Contact;
 use App\Models\Map;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $categories;
+
+    public function __construct() 
+    {
+        $this->categories = Category::with('subcategories')->get();
+        view()->share('categories', $this->categories);
+    }
     public function home()
     {
         $logos=Logo::where('status',1)->get();
@@ -27,9 +30,9 @@ class UserController extends Controller
        $books=Book::all();
        $contacts=Contact::latest()->first();
        $modals=Map::latest()->first();
+    
      
         return view('frontend.index', compact("logos",'banners', 'subcategories','books','contacts','modals'));
-        //
     }
     public function bayan()
     {
@@ -150,7 +153,7 @@ class UserController extends Controller
     {
         $logos=Logo::where('status',1)->get();
         $banners=Banner::where('status',1)->get();
-        $audios=Audio::whereSubcatId($id)->paginate(15); 
+        $audios=Audio::whereSubcatId($id)->paginate(15);
         return view('frontend.bayan', compact("logos",'banners','audios'));
 
     }
