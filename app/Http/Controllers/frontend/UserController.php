@@ -43,13 +43,13 @@ class UserController extends Controller
         return view('frontend.bayan', compact("logos",'banners','audios'));
         //
     }
-    public function singleaudio()
+    public function singleaudio($id)
     {
         
         $logos=Logo::where('status',1)->get();
         $banners=Banner::where('status',1)->get();
-        
-        return view('frontend.audio', compact("logos",'banners'));
+        $showaudio=Audio::find($id);
+        return view('frontend.audio', compact("logos",'banners','showaudio'));
         //
     }
     public function book()

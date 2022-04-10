@@ -167,6 +167,52 @@
         
         </li>
         <li class="pcoded-hasmenu ">
+          <a href="javascript:void(0)" class="waves-effect waves-dark">
+            <span class="pcoded-micon">
+              <i class="feather icon-list"></i>
+            </span>
+            <span class="pcoded-mtext">Permission</span>
+          </a>
+          <ul class="pcoded-submenu">
+            <li class="">
+              <a href="{{route('permission.create')}}" class="waves-effect waves-dark">
+                <span class="pcoded-mtext">Add permission</span>
+              </a>
+            </li>
+            <li class="">
+              <a href="{{route('permission.index')}}" class="waves-effect waves-dark">
+                <span class="pcoded-mtext">permission List</span>
+              </a>
+            </li>
+       
+          
+          </ul>
+        
+        </li>
+        <li class="pcoded-hasmenu ">
+          <a href="javascript:void(0)" class="waves-effect waves-dark">
+            <span class="pcoded-micon">
+              <i class="feather icon-list"></i>
+            </span>
+            <span class="pcoded-mtext">Document</span>
+          </a>
+          <ul class="pcoded-submenu">
+            <li class="">
+              <a href="{{route('document.add')}}" class="waves-effect waves-dark">
+                <span class="pcoded-mtext">Add Document</span>
+              </a>
+            </li>
+            <li class="">
+              <a href="{{route('document.list')}}" class="ntwaves-effect waves-dark">
+                <span class="pcoded-mtext">Document List</span>
+              </a>
+            </li>
+       
+          
+          </ul>
+        
+        </li>
+        <li class="pcoded-hasmenu ">
           <a href="{{route('roles.index')}}" class="waves-effect waves-dark">
             <span class="pcoded-micon">
               <i class="feather icon-list"></i>

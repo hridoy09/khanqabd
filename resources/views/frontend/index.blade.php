@@ -127,7 +127,7 @@
 					<h5>{{$subcategory->subcat_name}}</h5>
 					<p>(Before J0  uma Bayan and After Juma Majlis)</p>
 					@foreach ($subcategory->audios as $audio)
-					<a href="" style="border-bottom:1px solid grey; padding-bottom: 5px;">{{$audio->audio_file}}</a><a style="float: right;" href="{{asset('admin/audio/'.$audio->audio_file)}}" download="{{asset('admin/audio/'.$audio->audio_file)}}"><i class="fa-solid fa-download"></i></a>
+					<a href="{{route('simgleaudio',$audio->id)}}" style="border-bottom:1px solid grey; padding-bottom: 5px;">{{$audio->audio_file}}</a><a style="float: right;" href="{{asset('admin/audio/'.$audio->audio_file)}}" download="{{asset('admin/audio/'.$audio->audio_file)}}"><i class="fa-solid fa-download"></i></a>
 					@endforeach
 					
 					<div style="margin: 30px;">
@@ -141,56 +141,15 @@
 				
 			</div>
 			<div class="parent">
+				
 				<div class="short_clips zoom" >
 					<a href="">
 						<img src="{{asset('frontend')}}/images/clips.png">
 					</a>
 				</div>
-				<div class="short_clips zoom" >
-					<a href="">
-						<img src="{{asset('frontend')}}/images/clips.png">
-					</a>
-				</div>
-				<div class="short_clips zoom" >
-					<a href="">
-						<img src="{{asset('frontend')}}/images/clips.png">
-					</a>
-				</div>
-				<div class="short_clips zoom" >
-					<a href="">
-						<img src="{{asset('frontend')}}/images/clips.png">
-					</a>
-				</div>
-				<div class="short_clips zoom" >
-					<a href="">
-						<img src="{{asset('frontend')}}/images/clips.png">
-					</a>
-				</div>
-				<div class="short_clips zoom" >
-					<a href="">
-						<img src="{{asset('frontend')}}/images/clips.png">
-					</a>
-				</div>
-				<div class="short_clips zoom" >
-					<a href="">
-						<img src="{{asset('frontend')}}/images/clips.png">
-					</a>
-				</div>
-				<div class="short_clips zoom" >
-					<a href="">
-						<img src="{{asset('frontend')}}/images/clips.png">
-					</a>
-				</div>
-				<div class="short_clips zoom" >
-					<a href="">
-						<img src="{{asset('frontend')}}/images/clips.png">
-					</a>
-				</div>
-				<div class="short_clips zoom" >
-					<a href="">
-						<img src="{{asset('frontend')}}/images/clips.png">
-					</a>
-				</div>
+			
+				
+			
 			</div>
 			
 			<div class="row" style="margin: 60px 0px; padding: 10px 0px;   background: beige;">
@@ -205,7 +164,7 @@
 					<h5>{{$subcategory->subcat_name}}</h5>
 					<p>(Before J0  uma Bayan and After Juma Majlis)</p>
 					@foreach ($subcategory->audios as $audio)
-					<a href="" style="border-bottom:1px solid grey; padding-bottom: 5px;">{{$audio->audio_file}}</a>
+					<a href="{{route('simgleaudio',$audio->id)}}" style="border-bottom:1px solid grey; padding-bottom: 5px;">{{$audio->audio_file}}</a>
 					@endforeach
 				
 					<div style="margin: 30px;">
@@ -228,7 +187,7 @@
 				<div class="slider">
 				
 					@foreach ($books as $book )
-					<a href="{{asset('admin/book/'.$book->pdf_file)}}" type="application/pdf">
+					<a href="{{asset('admin/book/'.$book->pdf_file)}}" type="application/pdf" target="_blank">
 						<div class="slider__item">
 							<img src="{{asset('admin/book_feature_img/'.$book->feature_img)}}"
 							alt="">
@@ -244,6 +203,7 @@
 			<div style="text-align: center;">
 				<a class="btn btn-success" href="{{route('book')}}">MORE BOOKS (BANGLA, URDU, ENGLISH)</a>
 			</div>
+
 			<div class="row" style="margin: 20px 0px;box-shadow: 0px 0px 10px;
 				padding: 30px 0px;">
 				<div class="col-12 col-md-6 col-lg-3 audio_list"  >

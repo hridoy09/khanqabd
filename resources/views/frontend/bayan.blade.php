@@ -32,7 +32,7 @@
             <tr>
 							<td data-title="Id">{{$loop->iteration}}</td>
 							<td data-title="Date">{{$audio->created_at}}</td>
-							<td data-title="Age"><a href="#">{{$audio->audio_file}}</a></td>
+							<td data-title="Age"><a href="{{route('simgleaudio',$audio->id)}}">{{$audio->audio_file}}</a></td>
 							
               <td class="baya__download__size"  data-title="Size">20.25 MB</td>
 							<td class="baya__download__size" data-title="Download"><a href="{{asset('admin/audio/'.$audio->audio_file)}}" download="{{asset('admin/audio/'.$audio->audio_file)}}"><i class="fa fa-download" aria-hidden="true"></i>

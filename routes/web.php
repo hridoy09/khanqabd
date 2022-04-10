@@ -41,7 +41,7 @@ Route::get('/', [UserController::class, 'home'])->name('index');
 Route::get('bayan', [UserController::class, 'bayan'])->name('bayan');
 Route::get('books', [UserController::class, 'book'])->name('book');
 Route::get('audio', [UserController::class, 'audio'])->name('audio');
-Route::get('singleaudio', [UserController::class, 'singleaudio'])->name('simgleaudio');
+Route::get('singleaudio/{id}', [UserController::class, 'singleaudio'])->name('simgleaudio');
 Route::get('audio-by-subcat/{id}', [UserController::class, 'audioBySubcatId'])->name('audio_by_subcat');
 Route::get('book-by-cat/{book_cat}', [UserController::class, 'bookBycatId'])->name('book_by_cat');
 
