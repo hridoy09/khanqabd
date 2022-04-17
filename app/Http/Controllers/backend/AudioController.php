@@ -29,31 +29,41 @@ class AudioController extends Controller
     	$validateData = $request->validate([
             'cat_id' => 'required',
             'subcat_id' => 'required',
-    	
-           
+
+
     	],
     	[
             'cat_id.required' => 'select category',
             'subcat_id.required' => 'select subcategory',
     		'audio_file.mimes' => 'audio must be mp3 format',
-          
+
     	]);
+
         if($request->hasFile('feature_img')) {
             $file = $request->file('feature_img') ;
             $imgfileName = $file->getClientOriginalName() ;
             $imgPath = public_path().'/admin/audio/feature_img' ;
             $file->move($imgPath,$imgfileName);
-    	}
-	
+    	}else {
+            $notification = array(
+                'message' => 'image not find',
+                'alert-type' => 'failed',
+            );
+          return back()->with($notification);
+        }
 
-		//
 		if($request->hasFile('audio_file')) {
             $file = $request->file('audio_file') ;
             $fileName = $file->getClientOriginalName() ;
             $destinationPath = public_path().'/admin/audio' ;
             $file->move($destinationPath,$fileName);
-    	}
-	
+    	}else {
+            $notification = array(
+                'message' => 'audio not find',
+                'alert-type' => 'failed',
+            );
+          return back()->with($notification);
+        }
     Audio::insert([
       	'feature_img' => $imgfileName,
       	'audio_file' => $fileName,
@@ -77,19 +87,22 @@ class AudioController extends Controller
 
     public function deleteaudio($id){
     	$audio = Audio::findOrFail($id);
-        unlink("admin/audio/feature_img/".$audio->feature_img);
-        if (File::exists(public_path('admin/audio/')).$audio->audio_file) {
-            unlink((public_path('admin/audio/')).$audio->audio_file);
-          }
-       
+        $path = public_path("admin/audio/feature_img/".$audio->feature_img);
+        if (is_file($path)){
+            unlink($path);
+        }
+        if (File::exists(public_path('admin/audio/'.$audio->audio_file))) {
+            unlink(public_path('admin/audio/'.$audio->audio_file));
+        }
+
 		Audio::findOrFail($id)->delete();
 
-		
+
 		$notification = array(
             'message' => 'audio Deleted Successfully',
             'alert-type' => 'error',
         );
-		return redirect()->back()->with($notification);
+		return back()->with($notification);
     }
 
 	public function edit($id)
@@ -108,7 +121,7 @@ class AudioController extends Controller
      */
     public function update($id, Request $request){
 
-        
+
         $audios = Audio::find($id);
 		if($request->hasFile('audio_file')) {
             $file = $request->file('audio_file') ;

@@ -40,6 +40,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', [UserController::class, 'home'])->name('index');
 Route::get('bayan', [UserController::class, 'bayan'])->name('bayan');
 Route::get('books', [UserController::class, 'book'])->name('book');
+Route::get('documents', [UserController::class, 'document'])->name('document');
 Route::get('audio', [UserController::class, 'audio'])->name('audio');
 Route::get('audio-by-subcat/{id}', [UserController::class, 'audioBySubcatId'])->name('audio_by_subcat');
 Route::get('book-by-cat/{book_cat}', [UserController::class, 'bookBycatId'])->name('book_by_cat');
@@ -48,7 +49,7 @@ Route::get('book-by-cat/{book_cat}', [UserController::class, 'bookBycatId'])->na
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/dashboard',  [HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/dashboard',  [HomeController::class, 'index'])->name('dashboard')->middleware('auth');
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
