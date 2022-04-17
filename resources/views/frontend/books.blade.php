@@ -22,7 +22,6 @@
                   <option value="{{$book->book_cat}}">{{$book->book_cat}}</option>
                   @endforeach
               
-\
                 </select>
               </div>
             </div>

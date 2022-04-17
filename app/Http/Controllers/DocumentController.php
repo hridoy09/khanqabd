@@ -11,7 +11,7 @@ class DocumentController extends Controller
 {
     function __construct()
     {
-         $this->middleware('permission:user-list|user-create|document-edit|document-delete', ['only' => ['documentlist','store']]);
+         $this->middleware('permission:document-list|user-create|document-edit|document-delete', ['only' => ['documentlist','store']]);
          $this->middleware('permission:document-create', ['only' => ['adddocument','storedocument']]);
          $this->middleware('permission:document-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:document-delete', ['only' => ['deletedocument']]);
@@ -37,11 +37,11 @@ class DocumentController extends Controller
         
           //
           if($request->hasFile('document_file')) {
-              $file = $request->file('document_file');
-              $fileName = $file->getClientOriginalName();
-              $destinationPath = public_path().'/admin/document' ;
-              $file->move($destinationPath,$fileName);
-          }
+            $file = $request->file('document_file');
+            $fileName = $file->getClientOriginalName();
+            $destinationPath = public_path().'/admin/document' ;
+            $file->move($destinationPath,$fileName);
+    	}
       
       Document::insert([
          

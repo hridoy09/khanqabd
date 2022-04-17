@@ -10,7 +10,7 @@
 						<source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
 					</audio>
 					<h1 class="jamat" >Jamat Times</h1>
-					<div class="row " style="justify-content: center;">
+					<div class="row " style="justify-content: center; margin:0px; padding:0px;">
 						{{-- <div class="col-4 col-md-3 col-lg-2 text-center border" >
 							<h5>FAJR</h5>
 							<h3>04:40</h3>
@@ -204,7 +204,7 @@
 				<a class="btn btn-success" href="{{route('book')}}">MORE BOOKS (BANGLA, URDU, ENGLISH)</a>
 			</div>
 
-			<div class="row" style="margin: 20px 0px;box-shadow: 0px 0px 10px;
+			<div class="row" style="margin: 20px 0px; padding:0px; box-shadow: 0px 0px 10px;
 				padding: 30px 0px;">
 				<div class="col-12 col-md-6 col-lg-3 audio_list"  >
 					<h5><i class="fa-solid fa-microphone"></i> Juma Lectures</h5>
@@ -253,24 +253,24 @@
 					<div class="modal-body">
 						<div style="border-bottom:1px solid grey; padding-bottom: 5px;">
 							<div style="border-bottom: 1px solid grey;margin: 10px;">
-								<h5>{{$modals->first_bayan}}</h5>
+								<h5>{{$modals->first_bayan ?? ''}}</h5>
 								<ul class="list_style">
-									<li>{{$modals->first_bayan_1st_time}}</li>
-									<li>{{$modals->first_bayan_2nd_time}}</li>
+									<li>{{$modals->first_bayan_1st_time?? ''}}</li>
+									<li>{{$modals->first_bayan_2nd_time?? ''}}</li>
 								</ul>
 							</div>
 							<div style="border-bottom: 1px solid grey;margin: 10px;">
-								<h5>{{$modals->second_bayan}}</h5>
+								<h5>{{$modals->second_bayan?? ''}}</h5>
 								<ul class="list_style">
-									<li>{{$modals->second_bayan_time}}</li>
+									<li>{{$modals->second_bayan_time?? ''}}</li>
 								</ul>
 							</div>
 							<div style="margin: 10px;">
-								<h5>{{$modals->thied_bayan}}</h5>
+								<h5>{{$modals->thied_bayan?? ''}}</h5>
 								<ul class="list_style">
-									<li>{{$modals->third_bayan_time}}</li>
+									<li>{{$modals->third_bayan_time?? ''}}</li>
 								</ul>
-								<iframe src="{{$modals->iframe_link}}" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+								<iframe src="{{$modals->iframe_link?? ''}}" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 							</div>
 							
 						</div>
