@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Logo;
 use App\Models\Banner;
 use App\Models\Book;
+use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Contact;
 use App\Models\Document;
@@ -15,11 +16,13 @@ use App\Models\Map;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $categories;
+
+    public function __construct()
+    {
+        $this->categories = Category::with('subcategories')->get();
+        view()->share('categories', $this->categories);
+    }
     public function home()
     {
         $logos=Logo::where('status',1)->get();

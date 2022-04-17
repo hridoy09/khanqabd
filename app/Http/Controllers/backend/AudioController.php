@@ -12,7 +12,7 @@ class AudioController extends Controller
 {
     function __construct()
     {
-         $this->middleware('permission:user-list|user-create|audio-edit|audio-delete', ['only' => ['audiolist','store']]);
+         $this->middleware('permission:audio-list|audio-create|audio-edit|audio-delete', ['only' => ['audiolist','store']]);
          $this->middleware('permission:audio-create', ['only' => ['addaudio','storeaudio']]);
          $this->middleware('permission:audio-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:audio-delete', ['only' => ['deleteaudio']]);

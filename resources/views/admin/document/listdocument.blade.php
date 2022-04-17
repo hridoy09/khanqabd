@@ -32,7 +32,7 @@
                                 <tbody>
                                     @foreach ($documents as $document)
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$document->category->name}}</td>
+                                    <td>{{$document->category->name ?? ''}}</td>
                                     <td>{{$document->document_file}}</td>
                              
                                         <td>

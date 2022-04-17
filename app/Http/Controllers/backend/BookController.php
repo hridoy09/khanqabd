@@ -16,7 +16,7 @@ class BookController extends Controller
 {
   function __construct()
   {
-       $this->middleware('permission:user-list|user-create|book-edit|book-delete', ['only' => ['booklist','store']]);
+       $this->middleware('permission:book-list|book-create|book-edit|book-delete', ['only' => ['booklist','store']]);
        $this->middleware('permission:book-create', ['only' => ['addbook','storebook']]);
        $this->middleware('permission:book-edit', ['only' => ['edit','update']]);
        $this->middleware('permission:book-delete', ['only' => ['deletebook']]);

@@ -10,9 +10,13 @@ class Document extends Model
     use HasFactory;
     protected $guarded = [];
 
-
+    /**
+     * Get the user that owns the Document
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function category()
     {
-        return $this->hasOne(Category::class, 'id', 'cat_id');
+        return $this->belongsTo(Category::class, 'cat_id', 'id');
     }
 }

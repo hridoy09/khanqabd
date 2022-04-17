@@ -1,5 +1,6 @@
 @extends('frontend.master.main')
 @section('content')
+
   <!-- Start  styles_main -->
 
   <div class="styles_main">
@@ -11,8 +12,9 @@
           </div>
 
           <div class="audio">
-            <audio style="padding:20px  0px; width:80%" class="audio-div" controls preload="metadata">
-              <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+            <audio controls class="audio_bck">
+              <source src="{{asset('admin/audio/'.$showaudio->audio_file)}}" type="audio/mpeg" />
+            
             </audio>
           </div>
 
@@ -26,13 +28,23 @@
                 <tbody>
                   <tr>
                     <th data-title="Id">Date</th>
-                    <td data-title="Date">08-03-2022</td>
+                    <td data-title="Date">{{$showaudio->created_at->format('d-m-Y')}}</td>
 
                     
                   </tr>
                   <tr>
                     <th data-title="Id">Size</th>
-                    <td data-title="Date">08-03-2022</td>
+                    @php
+                      $fileSize = filesize_formatted(public_path('admin/audio/'.$showaudio->audio_file));
+                      function filesize_formatted($path)
+                      {
+                          $size = filesize($path);
+                          $units = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+                          $power = $size > 0 ? floor(log($size, 1024)) : 0;
+                          return number_format($size / pow(1024, $power), 2, '.', ',') . ' ' . $units[$power];
+                      }
+                    @endphp
+                    <td data-title="Date">{{$fileSize}}</td>
                   </tr>
                   <tr>
                     <th data-title="Id">Voice</th>
@@ -60,10 +72,10 @@
           </div>
 
           <div class="audio_btn">
-            <button type="button" class="btn btn-primary">Download</button>
+            <a class="btn btn-success btn-mid" href="{{asset('admin/audio/'.$showaudio->audio_file)}}" type="button" data-title="Download">Download</a>
           </div>
         </div>
       </div>
     </div>
   </div>
-@endsection
+  @endsection

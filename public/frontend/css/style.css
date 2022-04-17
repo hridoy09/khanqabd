@@ -576,13 +576,6 @@ a {
     text-align: center;
 }
 
-.audio_bck {
-    width: 80%!important;
-    background: #0d4c4c !important;
-    background-image: none !important;
-    background-image: url(/5bbcde0a05f1ce7e389f577548c9dee7.png!important);
-}
-
 .table-section2 {
     padding-top: 20px;
 }
@@ -614,3 +607,6 @@ a {
         max-width: 800px!important;
     }
 }
+
+
+/* End styles_main */

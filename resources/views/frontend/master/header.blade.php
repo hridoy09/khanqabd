@@ -28,26 +28,21 @@
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="{{route('index')}}">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('bayan')}}">Bayan</a>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('book')}}">Books</a>
-                        </li>
-                        
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Link
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="margin-top: 0px;">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                        
+                        @foreach ($categories as $category)
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        {{$category->name}}
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="margin-top: 0px;">
+                                        @foreach ($category->subcategories as $subcategory)
+                                            <li><a class="dropdown-item" href="{{route('audio_by_subcat', $subcategory->id)}}">{{$subcategory->subcat_name}}</a></li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                        @endforeach
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('book')}}">Book</a>
+                                </li>
                     </ul>
                 </div>
             </div>
