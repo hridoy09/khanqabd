@@ -14,6 +14,7 @@ use App\Http\Controllers\backend\PermissionController;
 use App\Http\Controllers\backend\ProductController;
 use App\Http\Controllers\backend\RoleController;
 use App\Http\Controllers\backend\UserController as BuserController;
+use App\Http\Controllers\backend\VideoController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DocumentController;
 use Illuminate\Contracts\Auth\UserProvider;
@@ -42,9 +43,10 @@ Route::get('bayan', [UserController::class, 'bayan'])->name('bayan');
 Route::get('books', [UserController::class, 'book'])->name('book');
 Route::get('documents', [UserController::class, 'document'])->name('document');
 Route::get('audio', [UserController::class, 'audio'])->name('audio');
-Route::get('singleaudio/{id}', [UserController::class, 'singleaudio'])->name('simgleaudio');
+Route::get('singleaudio/{id}', [UserController::class, 'singleaudio'])->name('singleaudio');
 Route::get('audio-by-subcat/{id}', [UserController::class, 'audioBySubcatId'])->name('audio_by_subcat');
 Route::get('book-by-cat/{book_cat}', [UserController::class, 'bookBycatId'])->name('book_by_cat');
+Route::get('single-video/{book_cat}', [UserController::class, 'singlevideo'])->name('singlevideo');
 
 
 Auth::routes();
@@ -110,6 +112,15 @@ Route::prefix('document')->group(function(){
 	Route::get('/delete/{id}', [DocumentController::class, 'deletedocument']);
 	Route::get('/edit/{id}', [DocumentController::class, 'edit'])->name('document.edit');
 	Route::post('/update/{id}', [DocumentController::class, 'update'])->name('document.update');
+});
+Route::prefix('video')->group(function(){
+	Route::get('/add', [VideoController::class, 'addvideo'])->name('video.add');
+	Route::post('/store', [VideoController::class, 'storevideo'])->name('video.store');
+	Route::get('/all-files', [VideoController::class, 'videolist'])->name('video.list');
+
+	Route::get('/delete/{id}', [VideoController::class, 'deletevideo']);
+	Route::get('/edit/{id}', [VideoController::class, 'edit'])->name('video.edit');
+	Route::post('/update/{id}', [VideoController::class, 'update'])->name('video.update');
 });
 
 });

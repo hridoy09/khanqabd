@@ -8,12 +8,12 @@
       <div class="row">
         <div class="col-md-12">
           <div class="audio_text">
-            <h1>9-5-2021 Tashrih Urdu Ashaar Rf 27 Taraweeh Khanqah</h1>
+            <h1>{{asset('admin/audio/'.$audios->audio_file)}}</h1>
           </div>
 
           <div class="audio">
             <audio controls class="audio_bck">
-              <source src="{{asset('admin/audio/'.$showaudio->audio_file)}}" type="audio/mpeg" />
+              <source src="{{asset('admin/audio/'.$audios->audio_file)}}" type="audio/mpeg" />
             
             </audio>
           </div>
@@ -28,14 +28,14 @@
                 <tbody>
                   <tr>
                     <th data-title="Id">Date</th>
-                    <td data-title="Date">{{$showaudio->created_at->format('d-m-Y')}}</td>
+                    <td data-title="Date">{{$audios->created_at->format('d-m-Y')}}</td>
 
                     
                   </tr>
                   <tr>
                     <th data-title="Id">Size</th>
                     @php
-                      $fileSize = filesize_formatted(public_path('admin/audio/'.$showaudio->audio_file));
+                      $fileSize = filesize_formatted(public_path('admin/audio/'.$audios->audio_file));
                       function filesize_formatted($path)
                       {
                           $size = filesize($path);
@@ -46,16 +46,7 @@
                     @endphp
                     <td data-title="Date">{{$fileSize}}</td>
                   </tr>
-                  <tr>
-                    <th data-title="Id">Voice</th>
-                    <td data-title="Date">08-03-2022</td>
-                  </tr>
-
-                  <tr>
-                    <th data-title="Id">Views</th>
-                    <td data-title="Date">08-03-2022</td>
-                  </tr>
-
+                
                   
                   <tr>
                     <th data-title="Id">Details</th>
@@ -72,7 +63,7 @@
           </div>
 
           <div class="audio_btn">
-            <a class="btn btn-success btn-mid" href="{{asset('admin/audio/'.$showaudio->audio_file)}}" type="button" data-title="Download">Download</a>
+            <a class="btn btn-success btn-mid" href="{{asset('admin/audio/'.$audios->audio_file)}}" type="button" data-title="Download">Download</a>
           </div>
         </div>
       </div>

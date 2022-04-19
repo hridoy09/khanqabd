@@ -133,7 +133,7 @@
         <h5>{{$subcategory->subcat_name}}</h5>
         <p>(Before J0 uma Bayan and After Juma Majlis)</p>
         @foreach ($subcategory->audios->take(6) as $audio)
-        <a href="" style="border-bottom:1px solid grey; padding-bottom: 5px;">{{$audio->audio_file}}</a><a
+        <a href="{{route('singleaudio',$audio->id)}}" style="border-bottom:1px solid grey; padding-bottom: 5px;">{{$audio->audio_file}}</a><a
             style="float: right;" href="{{asset('admin/audio/'.$audio->audio_file)}}"
             download="{{asset('admin/audio/'.$audio->audio_file)}}"><i class="fa-solid fa-download"></i></a>
         @endforeach
@@ -149,58 +149,23 @@
 
 </div>
 <div class="parent">
-    <div class="short_clips zoom">
-        <a href="">
-            <img src="{{asset('frontend')}}/images/clips.png">
-        </a>
-    </div>
-    <div class="short_clips zoom">
-        <a href="">
-            <img src="{{asset('frontend')}}/images/clips.png">
-        </a>
-    </div>
-    <div class="short_clips zoom">
-        <a href="">
-            <img src="{{asset('frontend')}}/images/clips.png">
-        </a>
-    </div>
-    <div class="short_clips zoom">
-        <a href="">
-            <img src="{{asset('frontend')}}/images/clips.png">
-        </a>
-    </div>
-    <div class="short_clips zoom">
-        <a href="">
-            <img src="{{asset('frontend')}}/images/clips.png">
-        </a>
-    </div>
-    <div class="short_clips zoom">
-        <a href="">
-            <img src="{{asset('frontend')}}/images/clips.png">
-        </a>
-    </div>
-    <div class="short_clips zoom">
-        <a href="">
-            <img src="{{asset('frontend')}}/images/clips.png">
-        </a>
-    </div>
-    <div class="short_clips zoom">
-        <a href="">
-            <img src="{{asset('frontend')}}/images/clips.png">
-        </a>
-    </div>
-    <div class="short_clips zoom">
-        <a href="">
-            <img src="{{asset('frontend')}}/images/clips.png">
-        </a>
-    </div>
-    <div class="short_clips zoom">
-        <a href="">
-            <img src="{{asset('frontend')}}/images/clips.png">
-        </a>
-    </div>
-</div>
 
+
+    @foreach ($videos as $video )
+   
+        <div class="short_clips zoom">
+            <a href="{{asset('admin/video/'.$video->video_file)}}">
+                <a href="{{route('singlevideo', $video->id)}}"> <img src="{{asset('admin/video/feature_img/'.$video->feature_img)}}">    </a>
+            </a>
+        </div>
+
+    @endforeach
+  
+ 
+</div>
+<div style="margin: 30px;text-align:center;">
+    <a class="btn btn-success" href="">view More</a>
+</div>
 <div class="row" style="margin: 60px 0px; padding: 10px 0px;   background: beige;">
     @php
     $subcategoriesMiddle = App\Models\Subcategory::with('audios')->whereHas('audios')->latest()->take(4)->get();
@@ -234,7 +199,9 @@
 <div class="wrapper">
 
     <div class="slider">
-
+        @php
+        $videos = $videos->take(14);
+        @endphp
         @foreach ($books as $book )
         <a href="{{asset('admin/book/'.$book->pdf_file)}}" type="application/pdf">
             <div class="slider__item">
@@ -307,24 +274,24 @@
             <div class="modal-body">
                 <div style="border-bottom:1px solid grey; padding-bottom: 5px;">
                     <div style="border-bottom: 1px solid grey;margin: 10px;">
-                        <h5>{{$modals->first_bayan}}</h5>
+                        <h5>{{$modals->first_bayan??''}}</h5>
                         <ul class="list_style">
-                            <li>{{$modals->first_bayan_1st_time}}</li>
-                            <li>{{$modals->first_bayan_2nd_time}}</li>
+                            <li>{{$modals->first_bayan_1st_time??''}}</li>
+                            <li>{{$modals->first_bayan_2nd_time??''}}</li>
                         </ul>
                     </div>
                     <div style="border-bottom: 1px solid grey;margin: 10px;">
-                        <h5>{{$modals->second_bayan}}</h5>
+                        <h5>{{$modals->second_bayan??''}}</h5>
                         <ul class="list_style">
-                            <li>{{$modals->second_bayan_time}}</li>
+                            <li>{{$modals->second_bayan_time??''}}</li>
                         </ul>
                     </div>
                     <div style="margin: 10px;">
-                        <h5>{{$modals->thied_bayan}}</h5>
+                        <h5>{{$modals->thied_bayan??''}}</h5>
                         <ul class="list_style">
-                            <li>{{$modals->third_bayan_time}}</li>
+                            <li>{{$modals->third_bayan_time??''}}</li>
                         </ul>
-                        <iframe src="{{$modals->iframe_link}}" width="100%" height="300" style="border:0;"
+                        <iframe src="{{$modals->iframe_link??''}}" width="100%" height="300" style="border:0;"
                             allowfullscreen="" loading="lazy"></iframe>
                     </div>
 

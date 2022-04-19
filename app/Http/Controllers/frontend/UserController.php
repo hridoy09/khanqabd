@@ -13,6 +13,7 @@ use App\Models\Subcategory;
 use App\Models\Contact;
 use App\Models\Document;
 use App\Models\Map;
+use App\Models\Video;
 
 class UserController extends Controller
 {
@@ -32,8 +33,8 @@ class UserController extends Controller
        $contacts=Contact::latest()->first();
        $modals=Map::latest()->first();
        $documents=Document::all()->take(6);
-
-        return view('frontend.index', compact("logos",'documents','banners', 'subcategories','books','contacts','modals'));
+        $videos=Video::all();
+        return view('frontend.index', compact("logos",'documents','banners', 'subcategories','books','contacts','modals','videos'));
         //
     }
     public function bayan()
@@ -77,12 +78,13 @@ class UserController extends Controller
         //
     }
 
-    public function audio()
+    public function singleaudio($id)
     {
 
         $logos=Logo::where('status',1)->get();
         $banners=Banner::where('status',1)->get();
-        return view('frontend.singleaudio',compact("logos",'banners'));
+        $audios=Audio::find($id);
+        return view('frontend.audio',compact("logos",'banners','audios'));
         //
     }
 
@@ -159,6 +161,14 @@ class UserController extends Controller
         $banners=Banner::where('status',1)->get();
         $audios=Audio::whereSubcatId($id)->paginate(15);
         return view('frontend.bayan', compact("logos",'banners','audios'));
+
+    }
+    public function singlevideo($id)
+    {
+        $logos=Logo::where('status',1)->get();
+        $banners=Banner::where('status',1)->get();
+        $videos=Video::find($id);
+        return view('frontend.singlevideo', compact("logos",'banners','videos'));
 
     }
 
