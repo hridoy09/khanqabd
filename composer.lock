@@ -4,8 +4,53 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "559434214de702c90849d9ba87e829f9",
+    "content-hash": "6bd13d0b9d880f147cb4ae33d0c1a125",
     "packages": [
+        {
+            "name": "adnane/laravel-qibla",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/adnane-ka/laravel-qibla.git",
+                "reference": "acaeb530f55700055705242eda5980909056143c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/adnane-ka/laravel-qibla/zipball/acaeb530f55700055705242eda5980909056143c",
+                "reference": "acaeb530f55700055705242eda5980909056143c",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Adnane\\Qibla\\QiblaServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Adnane\\Qibla\\": "/src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "adnane-ka",
+                    "email": "dannykadri0@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A laravel Package to get qibla directionns",
+            "support": {
+                "issues": "https://github.com/adnane-ka/laravel-qibla/issues",
+                "source": "https://github.com/adnane-ka/laravel-qibla/tree/1.0.0"
+            },
+            "time": "2021-04-12T17:14:10+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.9.3",
@@ -8040,5 +8085,5 @@
         "php": "^8.0.2"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.2.0"
 }

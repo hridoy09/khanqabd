@@ -17,6 +17,7 @@ use App\Http\Controllers\backend\UserController as BuserController;
 use App\Http\Controllers\backend\VideoController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\frontend\QiblaDirection;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,7 +48,7 @@ Route::get('singleaudio/{id}', [UserController::class, 'singleaudio'])->name('si
 Route::get('audio-by-subcat/{id}', [UserController::class, 'audioBySubcatId'])->name('audio_by_subcat');
 Route::get('book-by-cat/{book_cat}', [UserController::class, 'bookBycatId'])->name('book_by_cat');
 Route::get('single-video/{book_cat}', [UserController::class, 'singlevideo'])->name('singlevideo');
-
+Route::get('qibla-direction', [QiblaDirection::class, 'qiblaDirection']);
 
 Auth::routes();
 

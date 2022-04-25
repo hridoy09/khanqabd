@@ -1,5 +1,6 @@
 @extends('frontend.master.main')
 @section('content')
+
 <div class="row" style="padding:30px  0px; margin: 0px;">
 
     <div class="col-12 col-lg-4 col-md-4" style="text-align: center;">
@@ -49,6 +50,19 @@
     <div class="col-12 col-lg-4 col-md-4" style="text-align: center;    display: flex;
 				flex-direction: column;
 				justify-content: center;">
+
+<div class="compass">
+    <div class="arrow"></div>
+    <div class="disc" id="compassDiscImg"></div>
+  </div>
+  <div class="orientation-data" style="display: none;">
+    <div>Beta: <span id="tiltFB"></span></div>
+    <div>Gamma: <span id="tiltLR"></span></div>
+    <div>Alpha: <span id="direction"></span></div>
+  </div>
+  <div style="display: none" id="notice"></div>
+
+
         <div>
             <h2 style="margin-bottom: 10px;">Next Majlis </h2>
 
@@ -72,6 +86,7 @@
     <div class="col-12 col-lg-4 col-md-4" style="    display: flex;
 				flex-direction: column;
 				justify-content: center;">
+                
         <h2 style="margin-bottom: 15px;text-align: center;">Contact Us </h2>
         <table style="margin-left: auto; margin-right: auto;">
             <tbody>
@@ -220,16 +235,19 @@
 </div>
 <div class="row" style="margin: 20px 0px;box-shadow: 0px 0px 10px;
 				padding: 30px 0px;">
+   @php $subcategoriesRandom = App\Models\Subcategory::with('audios')->whereHas('audios')->skip(4)->latest()->take(2)->get();
+@endphp
+    @foreach($subcategoriesRandom as $middleLecture)
     <div class="col-12 col-md-6 col-lg-3 audio_list">
         <h5><i class="fa-solid fa-microphone"></i> Juma Lectures</h5>
 
-        <a href="" style="border-bottom:1px solid grey; padding-bottom: 5px;">18-2-2022 After Juma Mou Rizwan Sb
-            .mp3</a><a style="float: right;" href=""><i class="fa-solid fa-download"></i></a>
+        <a href="" style="border-bottom:1px solid grey; padding-bottom: 5px;">{{$audio->audio_file}}</a><a style="float: right;" href=""><i class="fa-solid fa-download"></i></a>
         <div style="margin: 30px;">
             <a class="btn btn-success" href="">view More</a>
         </div>
 
     </div>
+    @endforeach
     <div class="col-12 col-md-6 col-lg-3 audio_list">
         <h5><i class="fa-solid fa-microphone"></i> Juma Lectures</h5>
 
